@@ -14,6 +14,7 @@ Harry Potter/Fleur Delacour
 - [Of Witches and Stiches - DJKopper](https://www.fanfiction.net/s/13956090/1/Of-Witches-and-Snitches)
 - [The Half-Blood Romantic - Sophprosyne](https://www.fanfiction.net/s/12627473/1/The-Half-Blood-Romantic)
 - [The Purpose of Wings - Charlennette](https://www.fanfiction.net/s/13745570/1/The-Purpose-of-Wings)
+- [Stolen Hearts - gamer0890](https://www.fanfiction.net/s/14184590/1/Stolen-Hearts) 
 
 
 ## Shorter Fics
@@ -40,6 +41,5 @@ Harry Potter/Fleur Delacour
 - [Kingdom of Ashes - DJKopper](https://www.fanfiction.net/s/14194021/1/Kingdom-of-Ashes) 
 - [New Tides - Notyou21](https://www.fanfiction.net/s/13087397/1/New-Tides) 
 - [Professor Delacour - HephaestusBuilds](https://www.fanfiction.net/s/14086816/1/Professor-Delacour) 
-- [Stolen Hearts - gamer0890](https://www.fanfiction.net/s/14184590/1/Stolen-Hearts) 
 - [The Music of Life - BalletOfLove](https://www.fanfiction.net/s/13481823/1/The-Music-of-Life) 
 - [The Shadow of Death - Darkened Void](https://www.fanfiction.net/s/13809861/1/The-Shadow-of-Death) 
