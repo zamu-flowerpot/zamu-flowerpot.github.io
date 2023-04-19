@@ -31,6 +31,7 @@ Personal Recs are fics I've chosen and thus are all over the place in terms of "
 
 Either I haven't started, or I need more fics before feeling confident in the recommendations.
 
+- [chibipot](./recommendations/chibipot.md) - Gabrielle Delacour/Harry Potter
 - [haphne](./recommendations/haphne.md) - Daphne Greengrass/Harry Potter
 - [harmony](./recommendations/harmony.md) - Hermione Granger/Harry Potter
 - [hellatrix](./recommendations/hellatrix.md) - Bellatrix Black Lestrange/Harry Potter
