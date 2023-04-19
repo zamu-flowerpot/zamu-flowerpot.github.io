@@ -10,11 +10,12 @@ Built using [mdbook](https://rust-lang.github.io/mdBook/) and [GitHub Pages](htt
 
 Community Recs are fics I've prompted the community input from (or have wholesale copied recommendations lists from the community), so they might appeal more broadly.
 
-> These tend to follow the pattern of `Longer`, `Shorter`, `One-shots`, and `Ongoing`. With:
-> - `Longer` being greater than 80k words
-> - `Shorter` being greater than 4k words but less than 80k words
-> - `One-shots` being less than 4k words
-> - `Ongoing` being fics that are not finished
+> These tend to follow the pattern of `Longer`, `Shorter`, `One-shots`, `Ongoing`, and possibly `Unsorted`. With:
+> - `Longer` indicating fics with word counts greater than 80k
+> - `Shorter` indicating fics with word counts between 4k words and 80k words
+> - `One-shots` indicating fics with word counts less than 4k words
+> - `Ongoing` indicate fics that are not finished and updating
+> - `Unorted` indicate fics that haven't been sorted yet
 
 
 
@@ -35,7 +36,7 @@ Either I haven't started, or I need more fics before feeling confident in the re
 - [hellatrix](./recommendations/hellatrix.md) - Bellatrix Black Lestrange/Harry Potter
 - [honks](./recommendations/honks.md) - Nymphadora Tonks/Harry Potter
 - [huna](./recommendations/huna.md) - Luna Lovegood/Harry Potter
-
+- [mult](./recommendations/mult.md) - Polyamory/Harem/etc.
 
 ## Glossary
 
