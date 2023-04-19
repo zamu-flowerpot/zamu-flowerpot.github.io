@@ -15,5 +15,6 @@
     - [hellatrix](./recommendations/hellatrix.md)
     - [honks](./recommendations/honks.md)
     - [huna](./recommendations/huna.md)
+    - [mult](./recommendations/mult.md)
 
 [Contribution](./contribution.md)
