@@ -2,6 +2,8 @@
 
 Gabrielle Delacour/Harry Potter
 
+> * (unofficial) discord: [https://discord.gg/flowerpot](https://discord.gg/flowerpot) 
+
 ## Longer Fics
 
 - [Vitam Paramus - TheEndless7](https://www.fanfiction.net/s/9444529/1/Vitam-Paramus)

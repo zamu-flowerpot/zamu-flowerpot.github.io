@@ -2,6 +2,8 @@
 
 Harry Potter/Narcissa Black Malfoy
 
+> * (unofficial) discord: [https://discord.gg/flowerpot](https://discord.gg/flowerpot) 
+
 > NB: For the most part, these aren't shlocky "Draco did/said something bad post-war and now Narcissa will do *anything* to save him from Azkaban" fics. If they are, I'll mention why they are included.
 >
 > Oh, other than having ongoing fics at the top of each section, there is no particular ordering.
