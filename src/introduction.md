@@ -34,6 +34,7 @@ Either I haven't started, or I need more fics before feeling confident in the re
 
 - [haphne](./recommendations/haphne.md) - Daphne Greengrass/Harry Potter
 - [hellatrix](./recommendations/hellatrix.md) - Bellatrix Black Lestrange/Harry Potter
+- [hinny](./recommendations/hinny.md) - Ginny Weasley/Harry Potter
 - [honks](./recommendations/honks.md) - Nymphadora Tonks/Harry Potter
 - [huna](./recommendations/huna.md) - Luna Lovegood/Harry Potter
 - [mult](./recommendations/mult.md) - Polyamory/Harem/etc.
@@ -45,12 +46,13 @@ Either I haven't started, or I need more fics before feeling confident in the re
 - `PWP` - "Porn with Plot"; One of the tenants in writing the Fic is to write smut
 
 ### Pairings
-- `Flowerpot` - Fleur Delacour/Harry Potter 
 - `Chibipot` - Gabrielle Delacour/Harry Potter
-- `Milfoy` - Narcissa Black Malfoy/Harry Potter
-- `Harrissa` - Narcissa Malfoy/Harry Potter
+- `Flowerpot` - Fleur Delacour/Harry Potter 
 - `Haphne` - Daphne Greengrass/Harry Potter
-- `Huna` - Luna Lovegood/Harry Potter
-- `Honks` - Nymphadora Tonks/Harry Potter
 - `Harmony` - Hermione Granger/Harry Potter
+- `Harrissa` - Narcissa Malfoy/Harry Potter
+- `Hinny` - Ginny Weasley/Harry Potter
 - `Hellatrix` - Bellatrix Black Lestrange/Harry Potter
+- `Honks` - Nymphadora Tonks/Harry Potter
+- `Huna` - Luna Lovegood/Harry Potter
+- `Milfoy` - Narcissa Black Malfoy/Harry Potter

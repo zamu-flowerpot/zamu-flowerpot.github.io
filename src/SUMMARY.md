@@ -13,6 +13,7 @@
 - [Work in Progress Recommendations]()
     - [haphne](./recommendations/haphne.md)
     - [hellatrix](./recommendations/hellatrix.md)
+    - [hinny](./recommendations/hinny.md)
     - [honks](./recommendations/honks.md)
     - [huna](./recommendations/huna.md)
     - [mult](./recommendations/mult.md)
