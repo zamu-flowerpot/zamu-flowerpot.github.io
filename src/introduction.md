@@ -47,6 +47,7 @@ Either I haven't started, or I need more fics before feeling confident in the re
 - `PWP` - "Porn with Plot"; One of the tenants in writing the Fic is to write smut
 
 ### Pairings
+- `Bonks` - Nymphadora Tonks/Bill Weasley
 - `Chibipot` - Gabrielle Delacour/Harry Potter
 - `Flowerpot` - Fleur Delacour/Harry Potter
 - `Haphne` - Daphne Greengrass/Harry Potter
