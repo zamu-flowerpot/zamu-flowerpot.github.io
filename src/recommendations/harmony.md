@@ -20,6 +20,13 @@ Harry Potter/Hermione Granger
 - [The Augurey - La-Matrona](https://www.fanfiction.net/s/12310861/1/The-Augurey)
 - [Time is the Fire - Oddment Tweak](https://www.fanfiction.net/s/6033933/1/Time-is-the-Fire)
 - [What He'll Sorely Miss - HarmonyPie714](https://www.fanfiction.net/s/11420604/1/What-He-ll-Sorely-Miss)
+- [Unlike a Sister - madharmony](https://archiveofourown.org/works/38165668/chapters/95348221)
+- [Fourteen Days - alexandra_emerson](https://archiveofourown.org/works/34429072/chapters/85681648)
+- [One Day at a Time - alexandra_emerson](https://archiveofourown.org/works/31887439/chapters/78957238)
+- [Always There - alexandra_emerson](https://archiveofourown.org/works/30982961/chapters/76524524)
+- [The Bodyguard - emmy_award](https://archiveofourown.org/works/27085609/chapters/66136348)
+- [In The Forest Of Dean - T3Tohru](https://archiveofourown.org/works/19865440/chapters/47045731)
+
 
 ## Shorter Fics (4k->80k)
 
@@ -50,6 +57,9 @@ Harry Potter/Hermione Granger
 - [The Mark - Nargled](https://www.fanfiction.net/s/11252584/1/The-Mark)
 - [The Mountains of the Moon - White Squirrel](https://www.fanfiction.net/s/12306845/1/The-Mountains-of-the-Moon)
 - [Time Heals - anthfan](https://www.fanfiction.net/s/8310754/1/Time-Heals)
+- [I Hate Everything About You - alexandra_emerson](https://archiveofourown.org/works/36997030/chapters/92306053)
+- [Stupid - The Seamonkey](https://www.fanfiction.net/s/3675262/1/Stupid)
+
 
 ## One-shots
 
@@ -78,5 +88,7 @@ Harry Potter/Hermione Granger
 - [The Single Exception to Hermione's Rules - athenaharmony](https://www.fanfiction.net/s/7420187/1/The-Single-Exception-to-Hermione-s-Rules)
 - [Us - uchiha.s](https://www.fanfiction.net/s/8535401/1/Us)
 - [Water Under the Bridge - MrBenzedrine](https://www.fanfiction.net/s/12460571/1/Water-Under-The-Bridge)
+- [The Letter - alexandra_emerson](https://archiveofourown.org/works/41921235)
+- [When Harry Met Hermione](https://archiveofourown.org/works/31679084)
 
 ## Ongoing
