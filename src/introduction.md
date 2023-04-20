@@ -20,6 +20,7 @@ Community Recs are fics I've prompted the community input from (or have wholesal
 
 - [chibipot](./recommendations/chibipot.md) - Gabrielle Delacour/Harry Potter
 - [flowerpot](./recommendations/flowerpot.md) - Fleur Delacour/Harry Potter
+- [haphne](./recommendations/haphne.md) - Daphne Greengrass/Harry Potter
 - [harmony](./recommendations/harmony.md) - Hermione Granger/Harry Potter
 
 ### Personal Recs
@@ -32,7 +33,7 @@ Personal Recs are fics I've chosen and thus are all over the place in terms of "
 
 Either I haven't started, or I need more fics before feeling confident in the recommendations.
 
-- [haphne](./recommendations/haphne.md) - Daphne Greengrass/Harry Potter
+
 - [hellatrix](./recommendations/hellatrix.md) - Bellatrix Black Lestrange/Harry Potter
 - [hinny](./recommendations/hinny.md) - Ginny Weasley/Harry Potter
 - [honks](./recommendations/honks.md) - Nymphadora Tonks/Harry Potter
@@ -47,7 +48,7 @@ Either I haven't started, or I need more fics before feeling confident in the re
 
 ### Pairings
 - `Chibipot` - Gabrielle Delacour/Harry Potter
-- `Flowerpot` - Fleur Delacour/Harry Potter 
+- `Flowerpot` - Fleur Delacour/Harry Potter
 - `Haphne` - Daphne Greengrass/Harry Potter
 - `Harmony` - Hermione Granger/Harry Potter
 - `Harrissa` - Narcissa Malfoy/Harry Potter
