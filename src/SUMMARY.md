@@ -3,15 +3,15 @@
 [Introduction](./introduction.md)
 
 - [Community Recommendations]()
+    - [chibipot](./recommendations/chibipot.md)
     - [flowerpot](./recommendations/flowerpot.md)
+    - [harmony](./recommendations/harmony.md)
 
 - [Personal Recommendations]()
     - [milfoy](./recommendations/milfoy.md)
 
 - [Work in Progress Recommendations]()
-    - [chibipot](./recommendations/chibipot.md)
     - [haphne](./recommendations/haphne.md)
-    - [harmony](./recommendations/harmony.md)
     - [hellatrix](./recommendations/hellatrix.md)
     - [honks](./recommendations/honks.md)
     - [huna](./recommendations/huna.md)
