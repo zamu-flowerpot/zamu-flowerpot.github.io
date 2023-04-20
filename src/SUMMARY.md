@@ -19,3 +19,4 @@
     - [mult](./recommendations/mult.md)
 
 [Contribution](./contribution.md)
+[Entirely Unsorted](./unsorted.md)
