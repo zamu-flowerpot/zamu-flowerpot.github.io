@@ -90,7 +90,7 @@ Also none of these have been proofed for quality, people have just recommended t
 - [The Unforgiving Minute - Voice of the Nephilim](https://www.fanfiction.net/s/6256154) 84k Hinny
 - [To Shape and Change - Blueowl](https://www.fanfiction.net/s/6413108) 232k time travel snape; gen?
 - [Innocent - MarauderLover7](https://www.fanfiction.net/s/9469064) 494k sirius raising harry?
-- [Petrification Proliferation - White Squirrel](https://www.fanfiction.net/s/11265467) 34k Harry/Amelia
+- [Petrification Proliferation - White Squirrel](https://www.fanfiction.net/s/11265467) 34k gen
 - [Harry Potter and the Untitled Tome - Ihateseatbelts](https://www.fanfiction.net/s/10210053) 219k harmony?
 - [The Voyage of the Starship Hedwig - Ynyr](https://www.fanfiction.net/s/7135971) 100k gen?
 - [Harry Potter and the Champion's Champion - DriftWood1965](https://www.fanfiction.net/s/5483280) 109k harmony
