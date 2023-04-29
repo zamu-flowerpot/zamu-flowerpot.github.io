@@ -21,6 +21,7 @@ Harry Potter/Daphne Greengrass
 - [Beginning of a New Life - rlpj4](https://www.fanfiction.net/s/5163465/1/Beginning-of-a-New-Life)
 - [Contractual Invalidation - R-dude](https://www.fanfiction.net/s/11697407/1/Contractual-Invalidation)
 - [Daphne's Letter from the Future - TomHRichardson](https://www.fanfiction.net/s/13445758/1/Daphne-s-Letter-from-the-Future)
+- [The Pantomime Fountain - TheEndless7](https://www.fanfiction.net/s/14007535/1/)
 
 ## Shorter Fics
 
@@ -42,4 +43,16 @@ Harry Potter/Daphne Greengrass
 
 ## Ongoing
 
+## Unsorted
 
+- [to refuse the givens - snark](https://archiveofourown.org/works/19193497/chapters/45627454) 33k
+- [That Time Harry Charmed A Dragon - Professor Donger](https://www.fanfiction.net/s/13944073/1/) 2k
+- [A Friend to All Living Things - Professor Donger](https://www.fanfiction.net/s/14016388/1/) 6k
+- [Take Me Where the Sun is Shining - Dorothea Greengrass](https://www.fanfiction.net/s/13912680/1/) 63k
+- [New Neighbours - HonorverseFan](https://www.fanfiction.net/s/13924266/1/) 12k
+- [Tattoos - VaingloriousHound](https://www.fanfiction.net/s/13762036/1/) 10k
+- [To Touch the Stars - Elsbeth Ravensblood](https://www.fanfiction.net/s/12912621/1/) 22k
+- [Serendaphity - Dark-Syaoran](https://www.fanfiction.net/s/13930263/1/) 11k
+- [Daphne Greengrass, Side Character - LinzRw](https://www.fanfiction.net/s/11145058/1/) 113k
+- [Purebloods and Laser Guns -  Sonnie Celanna](https://www.fanfiction.net/s/13756220/1/) 1.6k
+- 
