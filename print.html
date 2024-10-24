@@ -1,0 +1,838 @@
+<!DOCTYPE HTML>
+<html lang="en" class="rust" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Community Recommendations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="recommendations/chibipot.html"><strong aria-hidden="true">1.1.</strong> chibipot</a></li><li class="chapter-item expanded "><a href="recommendations/flowerpot.html"><strong aria-hidden="true">1.2.</strong> flowerpot</a></li><li class="chapter-item expanded "><a href="recommendations/haphne.html"><strong aria-hidden="true">1.3.</strong> haphne</a></li><li class="chapter-item expanded "><a href="recommendations/harmony.html"><strong aria-hidden="true">1.4.</strong> harmony</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Personal Recommendations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="recommendations/milfoy.html"><strong aria-hidden="true">2.1.</strong> milfoy</a></li><li class="chapter-item expanded "><a href="recommendations/andromeda.html"><strong aria-hidden="true">2.2.</strong> andromeda/harry</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> Work in Progress Recommendations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="recommendations/hellatrix.html"><strong aria-hidden="true">3.1.</strong> hellatrix</a></li><li class="chapter-item expanded "><a href="recommendations/hinny.html"><strong aria-hidden="true">3.2.</strong> hinny</a></li><li class="chapter-item expanded "><a href="recommendations/honks.html"><strong aria-hidden="true">3.3.</strong> honks</a></li><li class="chapter-item expanded "><a href="recommendations/huna.html"><strong aria-hidden="true">3.4.</strong> huna</a></li><li class="chapter-item expanded "><a href="recommendations/mult.html"><strong aria-hidden="true">3.5.</strong> mult</a></li></ol></li><li class="chapter-item expanded "><a href="contribution.html">Contribution</a></li><li class="chapter-item expanded affix "><a href="unsorted.html">Entirely Unsorted</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Simple website for recommending Harry Potter fanfiction.</p>
+<p>Built using <a href="https://rust-lang.github.io/mdBook/">mdbook</a> and <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<h2 id="recommendations"><a class="header" href="#recommendations">Recommendations</a></h2>
+<h3 id="community-recs"><a class="header" href="#community-recs">Community Recs</a></h3>
+<p>Community Recs are fics I've prompted the community input from (or have wholesale copied recommendations lists from the community), so they might appeal more broadly.</p>
+<blockquote>
+<p>These tend to follow the pattern of <code>Longer</code>, <code>Shorter</code>, <code>One-shots</code>, <code>Ongoing</code>, and possibly <code>Unsorted</code>. With:</p>
+<ul>
+<li><code>Longer</code> indicating fics with word counts greater than 80k</li>
+<li><code>Shorter</code> indicating fics with word counts between 4k words and 80k words</li>
+<li><code>One-shots</code> indicating fics with word counts less than 4k words</li>
+<li><code>Ongoing</code> indicate fics that are not finished and updating</li>
+<li><code>Unorted</code> indicate fics that haven't been sorted yet</li>
+</ul>
+</blockquote>
+<ul>
+<li><a href="./recommendations/chibipot.html">chibipot</a> - Gabrielle Delacour/Harry Potter</li>
+<li><a href="./recommendations/flowerpot.html">flowerpot</a> - Fleur Delacour/Harry Potter</li>
+<li><a href="./recommendations/haphne.html">haphne</a> - Daphne Greengrass/Harry Potter</li>
+<li><a href="./recommendations/harmony.html">harmony</a> - Hermione Granger/Harry Potter</li>
+</ul>
+<h3 id="personal-recs"><a class="header" href="#personal-recs">Personal Recs</a></h3>
+<p>Personal Recs are fics I've chosen and thus are all over the place in terms of "quality" and might not suit your tastes.</p>
+<ul>
+<li><a href="./recommendations/milfoy.html">milfoy</a> - Narcissa Black Malfoy/Harry Potter</li>
+</ul>
+<h3 id="work-in-progress-recs"><a class="header" href="#work-in-progress-recs">Work in Progress Recs</a></h3>
+<p>Either I haven't started, or I need more fics before feeling confident in the recommendations.</p>
+<ul>
+<li><a href="./recommendations/hellatrix.html">hellatrix</a> - Bellatrix Black Lestrange/Harry Potter</li>
+<li><a href="./recommendations/hinny.html">hinny</a> - Ginny Weasley/Harry Potter</li>
+<li><a href="./recommendations/honks.html">honks</a> - Nymphadora Tonks/Harry Potter</li>
+<li><a href="./recommendations/huna.html">huna</a> - Luna Lovegood/Harry Potter</li>
+<li><a href="./recommendations/mult.html">mult</a> - Polyamory/Harem/etc.</li>
+</ul>
+<h2 id="glossary"><a class="header" href="#glossary">Glossary</a></h2>
+<h3 id="acronyms"><a class="header" href="#acronyms">Acronyms</a></h3>
+<ul>
+<li><code>EWE</code> - "Epilogue? What Epilogue?"; Fic is not compliant to the Epilogue</li>
+<li><code>PWP</code> - "Porn with Plot"; One of the tenants in writing the Fic is to write smut</li>
+</ul>
+<h3 id="pairings"><a class="header" href="#pairings">Pairings</a></h3>
+<ul>
+<li><code>Bonks</code> - Nymphadora Tonks/Bill Weasley</li>
+<li><code>Chibipot</code> - Gabrielle Delacour/Harry Potter</li>
+<li><code>Flowerpot</code> - Fleur Delacour/Harry Potter</li>
+<li><code>Haphne</code> - Daphne Greengrass/Harry Potter</li>
+<li><code>Harmony</code> - Hermione Granger/Harry Potter</li>
+<li><code>Harrissa</code> - Narcissa Malfoy/Harry Potter</li>
+<li><code>Hinny</code> - Ginny Weasley/Harry Potter</li>
+<li><code>Hellatrix</code> - Bellatrix Black Lestrange/Harry Potter</li>
+<li><code>Honks</code> - Nymphadora Tonks/Harry Potter</li>
+<li><code>Huna</code> - Luna Lovegood/Harry Potter</li>
+<li><code>Milfoy</code> - Narcissa Black Malfoy/Harry Potter</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chibipot"><a class="header" href="#chibipot">chibipot</a></h1>
+<p>Gabrielle Delacour/Harry Potter</p>
+<blockquote>
+<ul>
+<li>(unofficial) discord: <a href="https://discord.gg/flowerpot">https://discord.gg/flowerpot</a></li>
+</ul>
+</blockquote>
+<h2 id="longer-fics"><a class="header" href="#longer-fics">Longer Fics</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/9444529/1/Vitam-Paramus">Vitam Paramus - TheEndless7</a></li>
+<li><a href="https://jeconais.fanficauthors.net/Hope/index/">Hope - Jeconais</a></li>
+<li><a href="https://jeconais.fanficauthors.net/Happily_Ever_After/index/">Happily Ever After - Jeconais</a></li>
+</ul>
+<h2 id="shorter-fics"><a class="header" href="#shorter-fics">Shorter Fics</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13459233/1/Twelve-Days">Twelve Days - TheEndless7</a></li>
+</ul>
+<h2 id="one-shots"><a class="header" href="#one-shots">One-shots</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13918484/1/A-Cuckoo-Bird-s-Heart">A Cuckoo Bird's Heart - Charlennette</a></li>
+<li><a href="https://www.fanfiction.net/s/10027124/1/">Playmate - Yunaine</a></li>
+</ul>
+<h2 id="ongoing"><a class="header" href="#ongoing">Ongoing</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flowerpot-recommendations"><a class="header" href="#flowerpot-recommendations">flowerpot recommendations</a></h1>
+<p>Harry Potter/Fleur Delacour</p>
+<blockquote>
+<ul>
+<li>discord: <a href="https://discord.gg/flowerpot">https://discord.gg/flowerpot</a></li>
+<li>subreddit: <a href="https://old.reddit.com/r/harryandfleur">/r/harryandfleur</a></li>
+</ul>
+</blockquote>
+<h2 id="longer-fics-1"><a class="header" href="#longer-fics-1">Longer Fics</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/12792189/1/A-Beautiful-Lie">A Beautiful Lie - MaybeMayba</a></li>
+<li><a href="https://www.fanfiction.net/s/13298565/1/A-Court-of-Flowers">A Court of Flowers - DavetheAthenai</a></li>
+<li><a href="https://www.fanfiction.net/s/13819320/1/Hope-and-Healing">Hope and Healing - Liberty1Prime</a></li>
+<li><a href="https://www.fanfiction.net/s/6535391/1/Letters">Letters - TheEndless7</a></li>
+<li><a href="https://www.fanfiction.net/s/13956090/1/Of-Witches-and-Snitches">Of Witches and Stiches - DJKopper</a></li>
+<li><a href="https://www.fanfiction.net/s/12627473/1/The-Half-Blood-Romantic">The Half-Blood Romantic - Sophprosyne</a></li>
+<li><a href="https://www.fanfiction.net/s/13745570/1/The-Purpose-of-Wings">The Purpose of Wings - Charlennette</a></li>
+<li><a href="https://www.fanfiction.net/s/14184590/1/Stolen-Hearts">Stolen Hearts - gamer0890</a></li>
+</ul>
+<h2 id="shorter-fics-1"><a class="header" href="#shorter-fics-1">Shorter Fics</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/14133006/1/Artisan-s-Amour">Artisan's Amour - Gamer0890</a></li>
+<li><a href="https://www.fanfiction.net/s/14004693/1/A-Meeting-in-a-Crowd">A Meeting in a Crowd - OfficeSloth</a></li>
+<li><a href="https://www.fanfiction.net/s/13857412/1/Dancing-in-the-Rain">Dancing in the Rain - ArmsofAtlas</a></li>
+<li><a href="https://www.fanfiction.net/s/13976075/1/Hiding-and-Masking">Hiding and Masking - Doenerkint</a></li>
+<li><a href="https://www.fanfiction.net/s/14024276/1/Old-Shores-and-New-Horizons">Old Shores and New Horizons - HonorverseFan</a></li>
+<li><a href="https://www.fanfiction.net/s/13764597/1/With-Whom-To-Dance">With Whom To Dance? - WardyWoo</a></li>
+</ul>
+<h2 id="one-shots-1"><a class="header" href="#one-shots-1">One-shots</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13707263/1/Edelweiss">Edelweiss - Sal-Tal Studios</a></li>
+<li><a href="https://www.fanfiction.net/s/13769235/1/Stuttering-Hearts-and-Quickening-Strings">Stuttering Hearts and Quickening Strings - Charlennette</a></li>
+<li><a href="https://www.fanfiction.net/s/13741507/1/A-Lily-By-Any-Other-Name">A Lily By Any Other Name - Charlennette</a></li>
+<li><a href="https://www.fanfiction.net/s/13759969/1/A-Home-By-The-Sea">A Home By The Sea - Valirys Reinhald</a></li>
+<li><a href="https://fanfiction.net/s/8848598/1/Allure-Immune-Harry">Allure Immune Harry - Racke</a></li>
+</ul>
+<h2 id="ongoing-1"><a class="header" href="#ongoing-1">Ongoing</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13830502/1/A-King-s-Path">A King's Path - 521-DREAM</a></li>
+<li><a href="https://www.fanfiction.net/s/14136911/1/A-Neon-Lily-in-Night-City">A Neon Lily in Night City - OfficeSloth</a></li>
+<li><a href="https://www.fanfiction.net/s/13970728/1/Across-The-Time-A-Revival">Across the Time - A Revival - izwan</a></li>
+<li><a href="https://www.fanfiction.net/s/14073300/1/Beads-of-Brilliance">Beads of Brilliance - Palkey</a></li>
+<li><a href="https://www.fanfiction.net/s/14115016/1/Dying-to-Live">Dying to Live - ch4</a></li>
+<li><a href="https://www.fanfiction.net/s/14194021/1/Kingdom-of-Ashes">Kingdom of Ashes - DJKopper</a></li>
+<li><a href="https://www.fanfiction.net/s/13087397/1/New-Tides">New Tides - Notyou21</a></li>
+<li><a href="https://www.fanfiction.net/s/14086816/1/Professor-Delacour">Professor Delacour - HephaestusBuilds</a></li>
+<li><a href="https://www.fanfiction.net/s/13481823/1/The-Music-of-Life">The Music of Life - BalletOfLove</a></li>
+<li><a href="https://www.fanfiction.net/s/13809861/1/The-Shadow-of-Death">The Shadow of Death - Darkened Void</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="haphne"><a class="header" href="#haphne">haphne</a></h1>
+<p>Harry Potter/Daphne Greengrass</p>
+<h2 id="longer-fics-2"><a class="header" href="#longer-fics-2">Longer Fics</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13022013/1/Novocaine">Novocaine - StardustWarrior2991</a></li>
+<li><a href="https://www.fanfiction.net/s/12155794/1/">Honor Thy Blood - TheBlack'sResurgence</a></li>
+<li><a href="https://www.fanfiction.net/s/12911890/1/">Harry's Secret Friend - James Spookie</a></li>
+<li><a href="https://www.fanfiction.net/s/4334542/1/">The Grass is Always Greener - kb0</a></li>
+<li><a href="https://www.fanfiction.net/s/5087671/1/">Runic Animagi - Kassien</a></li>
+<li><a href="https://www.fanfiction.net/s/7888771/1/">The Snake Within - arkkitehti</a></li>
+<li><a href="https://www.fanfiction.net/s/6311215/1/">The Lion Tamer - James Spookie</a></li>
+<li><a href="https://www.fanfiction.net/s/6926581/1/Thanks-to-a-Snake">Thanks to a Snake - Irish216</a></li>
+<li><a href="https://www.fanfiction.net/s/13566959/1/">If not for Umbridge - chris400ad</a></li>
+<li><a href="https://www.fanfiction.net/s/10649604/1/The-Legacy-Preservation-Act">The Legacy Preservation Act - James Spookie</a></li>
+<li><a href="https://www.fanfiction.net/s/5071058/1/The-Reluctant-Champion">The Reluctant Champion - TheUnrealInsomniac</a></li>
+<li><a href="https://www.fanfiction.net/s/12357903/1/Marry-You">Marry You - Dorothea Greengrass</a></li>
+<li><a href="https://www.fanfiction.net/s/13698850/1/">Not with a half-blood! - anorc</a></li>
+<li><a href="https://www.fanfiction.net/s/8262940/1/">Unatoned - SeriousScribble</a></li>
+<li><a href="https://www.fanfiction.net/s/5163465/1/Beginning-of-a-New-Life">Beginning of a New Life - rlpj4</a></li>
+<li><a href="https://www.fanfiction.net/s/11697407/1/Contractual-Invalidation">Contractual Invalidation - R-dude</a></li>
+<li><a href="https://www.fanfiction.net/s/13445758/1/Daphne-s-Letter-from-the-Future">Daphne's Letter from the Future - TomHRichardson</a></li>
+<li><a href="https://www.fanfiction.net/s/14007535/1/">The Pantomime Fountain - TheEndless7</a></li>
+</ul>
+<h2 id="shorter-fics-2"><a class="header" href="#shorter-fics-2">Shorter Fics</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13948990/1/">How Silently She Sings - Charlennette</a></li>
+<li><a href="https://www.fanfiction.net/s/13323518/1/">Ice Cream - Andrius</a></li>
+<li><a href="https://www.fanfiction.net/s/13133746/1/">Daphne Greengrassa and the Importance of Intent - Petrificus Somewhatus</a></li>
+<li><a href="https://www.fanfiction.net/s/14026808/1/">Daphne Greengrass and the Preemptive Adulterer - Scribbling Steve</a></li>
+<li><a href="https://www.fanfiction.net/s/11541767/1/">Into the Snake Pit - Byakugan89</a></li>
+<li><a href="https://www.fanfiction.net/s/5835213/1/">The Marriage Contracts Redux - Clell65519</a></li>
+<li><a href="https://www.fanfiction.net/s/13512309/1/">Harry Potter and the Unwanted Marriage Contract - anorc</a></li>
+<li><a href="https://www.fanfiction.net/s/11967877/1/The-King-s-Indian-Attack">The King's Indian Attack - CallunaRussell</a></li>
+<li><a href="https://www.fanfiction.net/s/12267737/1/Prince">Prince - SallyJAvery</a></li>
+<li><a href="https://www.fanfiction.net/s/13631582/1/Teleology">Teleology - Liberty1Prime</a></li>
+</ul>
+<h2 id="one-shots-2"><a class="header" href="#one-shots-2">One-shots</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/13943688/1/">Daphne Can't Communicate - Professor Donger</a></li>
+<li><a href="https://www.fanfiction.net/s/13692449/1/Chance-Encounters">Chance Encounters - CaskettFan5</a></li>
+</ul>
+<h2 id="ongoing-2"><a class="header" href="#ongoing-2">Ongoing</a></h2>
+<h2 id="unsorted"><a class="header" href="#unsorted">Unsorted</a></h2>
+<ul>
+<li><a href="https://archiveofourown.org/works/19193497/chapters/45627454">to refuse the givens - snark</a> 33k</li>
+<li><a href="https://www.fanfiction.net/s/13944073/1/">That Time Harry Charmed A Dragon - Professor Donger</a> 2k</li>
+<li><a href="https://www.fanfiction.net/s/14016388/1/">A Friend to All Living Things - Professor Donger</a> 6k</li>
+<li><a href="https://www.fanfiction.net/s/13912680/1/">Take Me Where the Sun is Shining - Dorothea Greengrass</a> 63k</li>
+<li><a href="https://www.fanfiction.net/s/13924266/1/">New Neighbours - HonorverseFan</a> 12k</li>
+<li><a href="https://www.fanfiction.net/s/13762036/1/">Tattoos - VaingloriousHound</a> 10k</li>
+<li><a href="https://www.fanfiction.net/s/12912621/1/">To Touch the Stars - Elsbeth Ravensblood</a> 22k</li>
+<li><a href="https://www.fanfiction.net/s/13930263/1/">Serendaphity - Dark-Syaoran</a> 11k</li>
+<li><a href="https://www.fanfiction.net/s/11145058/1/">Daphne Greengrass, Side Character - LinzRw</a> 113k</li>
+<li><a href="https://www.fanfiction.net/s/13756220/1/">Purebloods and Laser Guns -  Sonnie Celanna</a> 1.6k</li>
+<li></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="harmony"><a class="header" href="#harmony">harmony</a></h1>
+<p>Harry Potter/Hermione Granger</p>
+<h2 id="longer-fics-3"><a class="header" href="#longer-fics-3">Longer Fics</a></h2>
+<ul>
+<li><a href="https://www.portkey-archive.org/story/5185">Forever Knight - DeliverMeFromEve</a></li>
+<li><a href="https://www.portkey-archive.org/story/7700">Hermione Granger and the Goblet of Fire - Coulsdon Eagle</a></li>
+<li><a href="https://www.portkey-archive.org/story/4200">Kissing Lessons for the Beginner - Amethyst</a></li>
+<li><a href="https://www.portkey-archive.org/story/4723">Magic Never Dies - Lynney</a></li>
+<li><a href="https://www.fanfiction.net/s/8045114/1/A-Marauder-s-Plan">A Marauder's Plan - CatsAreCool</a></li>
+<li><a href="https://www.fanfiction.net/s/4418163/1/Fulfilling-Obligations">Fulfilling Obligations - forbiddenharmony7</a></li>
+<li><a href="https://www.fanfiction.net/s/11120079/1/Harry-Potter-and-the-Hallows-of-Death">Harry Potter and the Hallows of Death - merlynthegrey</a></li>
+<li><a href="https://www.fanfiction.net/s/13405869/1/Hermione-Granger-and-the-Paradigm-Shift">Hermione Granger and the Paradigm Shift - Petrificus Somewhatus</a></li>
+<li><a href="https://www.fanfiction.net/s/5010568/1/In-Too-Deep">In Too Deep - perverted-squirrel</a></li>
+<li><a href="https://www.fanfiction.net/s/11080542/1/Patron">Patron - Starfox5</a></li>
+<li><a href="https://www.fanfiction.net/s/2746577/1/Resistance">Resistence - lorien829</a></li>
+<li><a href="https://www.fanfiction.net/s/6479080/1/Soul-Thief">Soul Thief - Walter Sobchak</a></li>
+<li><a href="https://www.fanfiction.net/s/4703843/1/That-Old-House">That Old House - vanillaparchment</a></li>
+<li><a href="https://www.fanfiction.net/s/12310861/1/The-Augurey">The Augurey - La-Matrona</a></li>
+<li><a href="https://www.fanfiction.net/s/6033933/1/Time-is-the-Fire">Time is the Fire - Oddment Tweak</a></li>
+<li><a href="https://www.fanfiction.net/s/11420604/1/What-He-ll-Sorely-Miss">What He'll Sorely Miss - HarmonyPie714</a></li>
+<li><a href="https://archiveofourown.org/works/38165668/chapters/95348221">Unlike a Sister - madharmony</a></li>
+<li><a href="https://archiveofourown.org/works/34429072/chapters/85681648">Fourteen Days - alexandra_emerson</a></li>
+<li><a href="https://archiveofourown.org/works/31887439/chapters/78957238">One Day at a Time - alexandra_emerson</a></li>
+<li><a href="https://archiveofourown.org/works/30982961/chapters/76524524">Always There - alexandra_emerson</a></li>
+<li><a href="https://archiveofourown.org/works/27085609/chapters/66136348">The Bodyguard - emmy_award</a></li>
+<li><a href="https://archiveofourown.org/works/19865440/chapters/47045731">In The Forest Of Dean - T3Tohru</a></li>
+</ul>
+<h2 id="shorter-fics-4k-80k"><a class="header" href="#shorter-fics-4k-80k">Shorter Fics (4k-&gt;80k)</a></h2>
+<ul>
+<li><a href="https://archiveofourown.org/works/23268805/chapters/55723339">A Symphony of Thursdays - emmy_award</a></li>
+<li><a href="https://www.portkey-archive.org/story/8672">Between The Shadow And The Soul - gryffindor-girl</a></li>
+<li><a href="https://www.fanfiction.net/s/11307320/1/A-Leap-of-Faith">A Leap of Faith - dianatuna</a></li>
+<li><a href="https://www.fanfiction.net/s/13438353/1/A-Day-in-December">A Day in December - GLNargle, Coffee Reveries</a></li>
+<li><a href="https://www.fanfiction.net/s/11388837/1/Adorable-Violence">Adorable Violence - Cloud Zen</a></li>
+<li><a href="https://www.fanfiction.net/s/12296750/1/Baby-It-s-Cold-Outside">Baby It's Cold Outside - Potato19</a></li>
+<li><a href="https://www.fanfiction.net/s/1033104/1/Come-Together">Come Together - Granger</a></li>
+<li><a href="https://www.fanfiction.net/s/12393868/1/Come-Undone">Come Undone - scarlet and gold</a></li>
+<li><a href="https://www.fanfiction.net/s/12941137/1/Curls-Kisses">Curls Kisses - luxsolis</a></li>
+<li><a href="https://www.fanfiction.net/s/13249165/1/Desire-Made-Real">Desire Made Real - Untold Harmony</a></li>
+<li><a href="https://www.fanfiction.net/s/11318985/1/Favorite-Things">Favorite Things - Stanrick</a></li>
+<li><a href="https://www.fanfiction.net/s/13135661/1/Game-Theory">Game Theory - SallyJAvery</a></li>
+<li><a href="https://www.fanfiction.net/s/10852864/1/How-to-Save-a-Life">How to Save a Life - Ally147</a></li>
+<li><a href="https://www.fanfiction.net/s/13158143/1/Once-Upon-A-Holiday">Once Upon a Holiday - MrsRen</a></li>
+<li><a href="https://www.fanfiction.net/s/3255466/1/The-List">The List - HermioneCrookshanks919</a></li>
+<li><a href="https://www.fanfiction.net/s/13435603/1/The-Perfect-Catch">The Perfect Catch - ProphecyMarauder45</a></li>
+<li><a href="https://www.fanfiction.net/s/13159212/1/A-Roman-Holiday">A Roman Holiday - TwoForATable</a></li>
+<li><a href="https://www.fanfiction.net/s/11974890/1/A-Step-You-Can-t-Take-Back">A Step You Can't Take Back - Potato19</a></li>
+<li><a href="https://www.fanfiction.net/s/12820671/1/All-Our-Yesterdays">All Our Yesterdays - SallyJAvery</a></li>
+<li><a href="https://www.fanfiction.net/s/13410559/1/Five-Pound-Note">Five Pound Note - msmerlin13</a></li>
+<li><a href="https://www.fanfiction.net/s/10852864/1/How-to-Save-a-Life">How to Save a Life - Ally147</a></li>
+<li><a href="https://www.fanfiction.net/s/13159603/1/Love-Hermione">Love Hermione - Untold Harmony</a></li>
+<li><a href="https://www.fanfiction.net/s/3556323/1/Sexiest-Witches-at-Hogwarts">Sexiest Witches at Hogwarts - alayneni</a></li>
+<li><a href="https://www.fanfiction.net/s/4078985/1/So-Wrong-for-Me">So Wrong for Me - scarlet and gold</a></li>
+<li><a href="https://www.fanfiction.net/s/11252584/1/The-Mark">The Mark - Nargled</a></li>
+<li><a href="https://www.fanfiction.net/s/12306845/1/The-Mountains-of-the-Moon">The Mountains of the Moon - White Squirrel</a></li>
+<li><a href="https://www.fanfiction.net/s/8310754/1/Time-Heals">Time Heals - anthfan</a></li>
+<li><a href="https://archiveofourown.org/works/36997030/chapters/92306053">I Hate Everything About You - alexandra_emerson</a></li>
+<li><a href="https://www.fanfiction.net/s/3675262/1/Stupid">Stupid - The Seamonkey</a></li>
+</ul>
+<h2 id="one-shots-3"><a class="header" href="#one-shots-3">One-shots</a></h2>
+<ul>
+<li><a href="https://archiveofourown.org/works/2906492">Call Me By Name - nightfalltwen, smutty_claus</a></li>
+<li><a href="https://archiveofourown.org/works/9134257">Auld Lang Syne - Aleigh75</a></li>
+<li><a href="https://archiveofourown.org/works/968734">Vein of Gold - pelespen</a></li>
+<li><a href="https://www.portkey-archive.org/story/8945">When Hermione Was Wrong - Bingbot</a></li>
+<li><a href="https://www.fanfiction.net/s/12334801/1/A-Seeker-s-Guide-to-Applied-Anatomy">A Seeker's Guide to Applied Anatomy - littlebirds</a></li>
+<li><a href="https://www.fanfiction.net/s/12187182/1/Approximation-Error-Is-Still-Error">Approximation Error Is Still Error - Forthwith16</a></li>
+<li><a href="https://www.fanfiction.net/s/3138719/1/Bloody-Hair-Bloody-Harry">Bloody Hair Bloody Harry - MissIzzy</a></li>
+<li><a href="https://www.fanfiction.net/s/5145006/1/Coffee">Coffee - vanillaparchment</a></li>
+<li><a href="https://www.fanfiction.net/s/9917454/1/Fear-of-Change">Fear of Change - MiHnn</a></li>
+<li><a href="https://www.fanfiction.net/s/3752722/1/Getting-Another-One">Getting Another One - Almost Anonymous</a></li>
+<li><a href="https://www.fanfiction.net/s/8866349/1/Hermione-s-Favourite-Gift">Hermione's Favorite Gift - TycheSong</a></li>
+<li><a href="https://www.fanfiction.net/s/7789518/1/It-s-Easy">It's Easy - Romantic Silence</a></li>
+<li><a href="https://www.fanfiction.net/s/12634967/1/Just-One-of-Those-Days">Just One of Those Days - DarthMittens</a></li>
+<li><a href="https://www.fanfiction.net/s/9958043/1/Merry-Christmas-Harry">Merry Christmas Harry - luckintheair04</a></li>
+<li><a href="https://www.fanfiction.net/s/7665773/1/Normal">Normal - musicprincess1990</a></li>
+<li><a href="https://www.fanfiction.net/s/4068063/1/Of-Quidditch-Pants-and-Persuasion">Of Quidditch Pants and Persuasion - It's Just Not Flowing</a></li>
+<li><a href="https://www.fanfiction.net/s/11332334/1/September-First">September First - mademoiselle.poupee</a></li>
+<li><a href="https://www.fanfiction.net/s/10135987/1/Simple-Confessions">Simple Confessions - comicbooklovergreen</a></li>
+<li><a href="https://www.fanfiction.net/s/12699960/1/Stay">Stay - mspolapotter</a></li>
+<li><a href="https://www.fanfiction.net/s/11352585/1/The-Most-Important-Lie">The Most Important Lie - ShayaLonnie</a></li>
+<li><a href="https://www.fanfiction.net/s/12946026/1/The-Perfect-Brew">The Perfect Brew - StarlingChild4</a></li>
+<li><a href="https://www.fanfiction.net/s/7502511/1/The-Sea-King">The Sea King - Doghead Thirteen</a></li>
+<li><a href="https://www.fanfiction.net/s/7420187/1/The-Single-Exception-to-Hermione-s-Rules">The Single Exception to Hermione's Rules - athenaharmony</a></li>
+<li><a href="https://www.fanfiction.net/s/8535401/1/Us">Us - uchiha.s</a></li>
+<li><a href="https://www.fanfiction.net/s/12460571/1/Water-Under-The-Bridge">Water Under the Bridge - MrBenzedrine</a></li>
+<li><a href="https://archiveofourown.org/works/41921235">The Letter - alexandra_emerson</a></li>
+<li><a href="https://archiveofourown.org/works/31679084">When Harry Met Hermione</a></li>
+</ul>
+<h2 id="ongoing-3"><a class="header" href="#ongoing-3">Ongoing</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="milfoy-recommendations"><a class="header" href="#milfoy-recommendations">milfoy recommendations</a></h1>
+<p>Harry Potter/Narcissa Black Malfoy</p>
+<blockquote>
+<ul>
+<li>(unofficial) discord: <a href="https://discord.gg/flowerpot">https://discord.gg/flowerpot</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>NB: For the most part, these aren't shlocky "Draco did/said something bad post-war and now Narcissa will do <em>anything</em> to save him from Azkaban" fics. If they are, I'll mention why they are included.</p>
+<p>Oh, other than having ongoing fics at the top of each section, there is no particular ordering.</p>
+</blockquote>
+<h2 id="less-smut"><a class="header" href="#less-smut">Less Smut</a></h2>
+<p><strong>"Wow! A Milfoy Story that isn't primarily focused on smut!"</strong></p>
+<p>Sadly, just entering this category means that the story is probably a cut above the rest of Milfoy fics. Shocking I know, not focusing on smut making the story better. That said, these still might have smut.</p>
+<ul>
+<li><a href="https://archiveofourown.org/works/30425877">The gift of time and patience - Mei (Ima1)</a>
+<ul>
+<li><code>21k words</code>, <code>2 chapters</code>, <code>slow burn</code>, <code>post war</code></li>
+<li>nice and slow build up that just makes the relationship work so well</li>
+<li>leaves off on a high note</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/25129696">Starry nights and sunny skies - Mei (Ima1)</a>
+<ul>
+<li><code>50k words</code>, <code>10 chapters</code>, <code>time travel</code>, <code>post war</code></li>
+<li>time travel fic with Harry travelling and dealing with the first war</li>
+<li>Novikov self-consistency principle is strong with this one as it tries to keep itself consistent even if it ends up kinda weird</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/31505039">Laughing All The Way To London - AppoApples</a>
+<ul>
+<li><code>120k words</code>, <code>30 chapters</code>, <code>time travel</code>, <code>pre first war</code>, <code>teacher Harry</code></li>
+<li>time travel, dad!Harry, teacher!Harry? I'm game</li>
+<li>the issue I have with this fic is that Narcissa is essentially an OC slotted into Narcissa Black's place, it works but it's not Narcissa Malfoy, ya know?</li>
+</ul>
+</li>
+<li><a href="https://www.fanfiction.net/s/13864586/1/Whispers-of-a-Raven">Whispers of a Raven - TheBlack'sResurgence</a>
+<ul>
+<li><code>347k words</code>, <code>35 chapters</code>, <code>time travel</code>, <code>pre first war</code>, <code>TBR</code></li>
+<li>TBR can be contentious, but personally I'm a fan of a more nuanced Black family so I generally enjoy his stuff</li>
+<li>The story can feel a bit chuuni at times, but it doesn't fall into crack or shlock</li>
+<li>same type of deal as Laughing All the Way to London, OC!Narcissa due to time travel which can be hit or miss. So if you want Narcissa Malfoy™, you might not enjoy it</li>
+</ul>
+</li>
+</ul>
+<h2 id="some-smut"><a class="header" href="#some-smut">Some Smut</a></h2>
+<p><strong>"It's <em><strong>MILF</strong></em>oy after all"</strong></p>
+<p>Decent Milfoy stories that might contain some focus on smut. These aren't any worse than the ones above, just that they might delve into smut longer.</p>
+<ul>
+<li><a href="https://www.fanfiction.net/s/8621542/1/The-Volunteer">The Volunteer - mrs.milfoy</a>
+<ul>
+<li><code>26k words</code>, <code>6 chapters</code>, <code>post war</code></li>
+<li>Volunteering at the St. Mungo's leads to some interesting happenings in Harry's life</li>
+<li>You can see the scenes play out and the detente between Harry and Narcissa is wonderful</li>
+<li>IIRC, my first milfoy fic which opened the flood doors to the rest so kudos on that</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/35096245">Scorched Earth Survivor - gevaisa</a>
+<ul>
+<li><code>1k word</code>, <code>one-shot</code>, <code>post war</code>, <code>Narcissa PoV</code></li>
+<li>Narcissa is thrust onto Harry to deal with in the aftermath of the war</li>
+<li>short snappy and evocative; it'll make you wish this was longer and more fleshed out</li>
+</ul>
+</li>
+<li><a href="https://www.fanfiction.net/s/9766122/1/Ladies-and-Gentlemen">Ladies and Gentlemen - mrs.milfoy</a>
+<ul>
+<li><code>4k word</code>, <code>one-shot</code>, <code>post war</code></li>
+<li>Harry finds someone breaking the rules and it goes from there</li>
+<li>not much opinion here other than it's well written and executed</li>
+</ul>
+</li>
+<li><a href="https://www.fanfiction.net/s/10503844/1/The-Favour">The Favour - mrs.milfoy</a>
+<ul>
+<li><code>15k words</code>, <code>2 chapters</code>, <code>post war</code>, <code>draco malfoy</code></li>
+<li>Draco asks Harry to do him a favor so he can boing his fiancé, Draco gets more than he bargained for</li>
+<li>not much opinion here other than it's well written and executed</li>
+</ul>
+</li>
+</ul>
+<h2 id="milfoy-adjacent"><a class="header" href="#milfoy-adjacent">Milfoy Adjacent</a></h2>
+<p>These are stories that aren't primarily focused on Milfoy but she plays a strong role within it.</p>
+<ul>
+<li><a href="https://archiveofourown.org/works/21677116">Harry Slays Voldemort - StevenTLawson</a>
+<ul>
+<li><code>5k words/chap</code>, <code>ongoing</code>, <code>life debt</code>, "<code>harem</code>",</li>
+<li>Harry kills Voldemort and earns a life debt</li>
+<li>life debts results with Harry getting a girlfriend</li>
+<li>puts a spin on the shlocky milfoy trope leaving Harry with a "harem"</li>
+<li>it's an interesting premise and I'm intersted to see how this premise would pan out</li>
+<li>Milfoy is part of the harem, but, with what is out so far, it shouldn't be called a Milfoy fic</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/39598377">Hermione deals with this - Chubster23</a>
+<ul>
+<li><code>4k words</code>, <code>one-shot</code>, <code>post war</code>, <code>haphne</code>, <code>harry/astoria</code>, <code>offscreen smut</code></li>
+<li>written as a homage of sorts to tie together a number of MayorHagger's works into a single story</li>
+<li>"[an] intersection of plots into a cohesive smutty harem romp [is fire]" - me</li>
+<li>the worst part of this is that it's so short, the story itself seems like something that <em>could</em> occur in a "Harry ended up with a Slytherin" AU</li>
+<li>the milfoy aspect of this story is essentially <a href="https://archiveofourown.org/works/22336837">Excuses and Distractions</a> and <a href="https://archiveofourown.org/works/20206903">Fast Times at Malfoy Manor</a> but I think that the framing that this story builds makes the narrative more compelling</li>
+</ul>
+</li>
+</ul>
+<h2 id="prompts-premises-and-other-ideas-for-milfoy"><a class="header" href="#prompts-premises-and-other-ideas-for-milfoy">Prompts, Premises, and Other Ideas (for Milfoy)</a></h2>
+<p>Maybe you want to take a crack at writing something. Maybe you just need some inspiration. Here are some ideas.</p>
+<ul>
+<li><a href="https://archiveofourown.org/works/32848348/chapters/81512050">Was it all Real or Just a Dream?</a>
+<ul>
+<li><code>5k words/chap</code>, <code>abandoned?</code>, <code>flowerpot</code>, <code>older!Harry</code></li>
+<li>this premise is fire and I'm actually upset no one has taken it and used it</li>
+<li>it's perfect for any cross-generational pairing because this ages Harry up while the rest of the cast stays the same making tricky age shifting easy</li>
+<li>it isn't explicitly Milfoy, it can work for any pairing with an age gap</li>
+<li>read it, it's only 5k words and I don't want to detract from the premise by explaining it</li>
+</ul>
+</li>
+<li><a href="https://www.fanfiction.net/s/13392602/1/The-Time-Harry-Stole-Lucius-s-Wife">The Time Harry Stole Lucius's Wife - redowlf96</a>
+<ul>
+<li><code>6.2k words/chap</code>, <code>abandoned?</code>, <code>whiskey wedding challenge</code></li>
+<li>sometimes it's not about the story, but the premise</li>
+<li>the title makes you think netorare and smut, but it's actually more of a whiskey wedding challenge that someone accepted and tried to make it work with Narcissa</li>
+<li>the story starts at a pretty high point for suspension of disbelief and only goes up</li>
+<li>at least the title is fun</li>
+</ul>
+</li>
+</ul>
+<h2 id="all-smut"><a class="header" href="#all-smut">All Smut</a></h2>
+<blockquote>
+<p>I am including these because they are stories that have Harry/Narcissa, are longer than 80k words, and Narcissa isn't an also-ran or harem member in terms of her relationship to Harry.</p>
+<p>This isn't to say that these aren't good, but smut is a <em>heavy</em> focus. Possibly to the detriment of the narrative.</p>
+</blockquote>
+<ul>
+<li><a href="https://archiveofourown.org/works/40318890">Two Minds, One Wand - RobWilsonWriting</a>
+<ul>
+<li><code>4.5k words/chap</code>, <code>ongoing</code>, <code>smut</code>, <code>amoral OOC Harry</code>, <code>bonding</code></li>
+<li>Harry gets the memories of Voldemort after the graveyard and decides to use his acquired knowledge to improve his chances at defeating him using said knowledge</li>
+<li>lots of fridge logic here so the story might be a heavy miss for some with the "bonding"</li>
+<li>smut gets in the way at times of an interesting premise and moral dilemma</li>
+<li>I'd totally read this even if the smut faded to black</li>
+<li>probably the one with the most plot out of the PWP fics</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/42141555">Whore Class - Riotstarter1214</a>
+<ul>
+<li><code>24k words/chap</code>, <code>ongoing</code>, <code>smut</code></li>
+<li>there is no story here, there is only smut</li>
+<li>probably not your cup of tea unless you are looking for smut with a hint of milfoy</li>
+<li>there is actually a bit of a relationship between Harry and Narcissa in this work and it could be so much more, but...</li>
+<li>Harry fucks nearly every female in the setting that could be construed as attarctive</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/22488859">A Vow of Control - MayorHagger</a>
+<ul>
+<li><code>12k words/chap</code>, <code>ongoing</code>, <code>smut</code>, <code>post war</code>, <code>amoral Harry</code>, <code>astoria/harry</code>, <code>harem</code></li>
+<li>imagine someone who tries to take advantage of Harry after he's been lenient with them</li>
+<li>then, instead of turning the other cheek, he then decides to takes advantage of them</li>
+<li>then, instead of trying to stay away from Harry they come back for more</li>
+<li>this is primarily smut, but it has actual character interactions and a semblance of plot</li>
+<li>sure the characters are all OOC and smut reigns supreme, but the characters have agency and Milfoy is in the story often</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="andromedaharry"><a class="header" href="#andromedaharry">Andromeda/Harry</a></h1>
+<p>Andromeda Tonks/Harry Potter</p>
+<h2 id="unsorted-1"><a class="header" href="#unsorted-1">Unsorted</a></h2>
+<ul>
+<li><a href="https://archiveofourown.org/works/27762553/chapters/67959796">Trick or Treat! - WaskeHD</a>
+<ul>
+<li>technically Harry/Andromeda/Fleur, but it's so good</li>
+</ul>
+</li>
+<li><a href="https://archiveofourown.org/works/30648047/chapters/75614801">What We Lost - AppoApples</a></li>
+<li><a href="https://archiveofourown.org/works/23336989">An Unconventional Relationship - ArkaneAssassin</a></li>
+<li><a href="https://archiveofourown.org/works/32795665">The Folly of the Bleeding Heart - VonPelt</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hellatrix"><a class="header" href="#hellatrix">hellatrix</a></h1>
+<p>Harry Potter/Bellatrix Black Lestrange</p>
+<h2 id="longer-fics-4"><a class="header" href="#longer-fics-4">Longer Fics</a></h2>
+<h2 id="shorter-fics-3"><a class="header" href="#shorter-fics-3">Shorter Fics</a></h2>
+<h2 id="one-shots-4"><a class="header" href="#one-shots-4">One-shots</a></h2>
+<h2 id="ongoing-4"><a class="header" href="#ongoing-4">Ongoing</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hinny"><a class="header" href="#hinny">hinny</a></h1>
+<p>Ginny Weasley/Harry Potter</p>
+<h2 id="longer-fics-5"><a class="header" href="#longer-fics-5">Longer Fics</a></h2>
+<h2 id="shorter-fics-4"><a class="header" href="#shorter-fics-4">Shorter Fics</a></h2>
+<h2 id="one-shots-5"><a class="header" href="#one-shots-5">One-shots</a></h2>
+<h2 id="ongoing-5"><a class="header" href="#ongoing-5">Ongoing</a></h2>
+<h2 id="unsorted-2"><a class="header" href="#unsorted-2">Unsorted</a></h2>
+<ul>
+<li><a href="https://archiveofourown.org/works/42198018/chapters/105946242">Harry Potter and the Ritual of Love's Memory - DBow</a> ~4750 words/chap;</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="honks"><a class="header" href="#honks">honks</a></h1>
+<p>Harry Potter/Nymphadora Tonks</p>
+<h2 id="longer-fics-6"><a class="header" href="#longer-fics-6">Longer Fics</a></h2>
+<h2 id="shorter-fics-5"><a class="header" href="#shorter-fics-5">Shorter Fics</a></h2>
+<h2 id="one-shots-6"><a class="header" href="#one-shots-6">One-shots</a></h2>
+<h2 id="ongoing-6"><a class="header" href="#ongoing-6">Ongoing</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="huna"><a class="header" href="#huna">huna</a></h1>
+<p>Harry Potter/Luna Lovegood</p>
+<h2 id="longer-fics-7"><a class="header" href="#longer-fics-7">Longer Fics</a></h2>
+<h2 id="shorter-fics-6"><a class="header" href="#shorter-fics-6">Shorter Fics</a></h2>
+<h2 id="one-shots-7"><a class="header" href="#one-shots-7">One-shots</a></h2>
+<h2 id="ongoing-7"><a class="header" href="#ongoing-7">Ongoing</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mult"><a class="header" href="#mult">mult</a></h1>
+<p>Multiple Partners, Polyamory, Harem, Coven, etc.</p>
+<p>Assume it'll have smut.</p>
+<h2 id="longer-fics-8"><a class="header" href="#longer-fics-8">Longer Fics</a></h2>
+<h2 id="shorter-fics-7"><a class="header" href="#shorter-fics-7">Shorter Fics</a></h2>
+<h2 id="one-shots-8"><a class="header" href="#one-shots-8">One-shots</a></h2>
+<h2 id="ongoing-8"><a class="header" href="#ongoing-8">Ongoing</a></h2>
+<h2 id="unsorted-3"><a class="header" href="#unsorted-3">Unsorted</a></h2>
+<ul>
+<li>
+<p><a href="https://m.fanfiction.net/s/13445758/1/Daphne-s-Letter-from-the-Future">Daphne's Letter from the Future - TomHRichardson</a></p>
+</li>
+<li>
+<p><a href="https://archiveofourown.org/works/21677116">Harry Slays Voldemort - StevenTLawson</a></p>
+</li>
+<li>
+<p><a href="https://archiveofourown.org/works/39598377">Hermione deals with this - Chubster23</a></p>
+</li>
+<li>
+<p><a href="https://archiveofourown.org/works/40318890">Two Minds, One Wand - RobWilsonWriting</a></p>
+</li>
+<li>
+<p><a href="https://archiveofourown.org/works/42141555">Whore Class - Riotstarter1214</a></p>
+</li>
+<li>
+<p><a href="https://archiveofourown.org/works/22488859">A Vow of Control - MayorHagger</a></p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contribution"><a class="header" href="#contribution">Contribution</a></h1>
+<p><strong>Contributions are welcome!</strong></p>
+<p>For the tech savvy:</p>
+<p>Open an Issue on <a href="https://github.com/zamu-flowerpot/zamu-flowerpot.github.io">GitHub</a> or even Submit a Pull Request.</p>
+<p>For the lazy:</p>
+<p>Message me recomendations on Discord (<code>zamubafoo#4011</code>).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="entirely-unsorted"><a class="header" href="#entirely-unsorted">Entirely Unsorted</a></h1>
+<p>Staging ground for lists needing to be sorted and possibly added to different pages.
+Might just be a URL, a proper link with the title and author, or all that plus the rough word count and a category or two.</p>
+<p>Also none of these have been proofed for quality, people have just recommended them.</p>
+<h2 id="likely-recommended"><a class="header" href="#likely-recommended">Likely Recommended?</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/10677106">Seventh Horcrux - Emerald Ashes</a> 104k; ?</li>
+<li><a href="https://www.fanfiction.net/s/5904185">Emperor - Marquis Black</a> 677k; ?</li>
+<li><a href="https://www.fanfiction.net/s/3401052">A Black Comedy - nonjon</a> 246k; ?</li>
+<li><a href="https://www.fanfiction.net/s/11191235">Harry Potter and the Prince of Slytherin - The Sinister Man</a> 1410k; ?</li>
+<li><a href="https://www.fanfiction.net/s/5511855">Delenda Est - Lord Silvere</a> 392k; Hellatrix</li>
+<li><a href="https://www.fanfiction.net/s/11858167">The Sum of Their Parts - holdmybeer</a> 143k; ?</li>
+<li><a href="https://www.fanfiction.net/s/6892925">Stages of Hope - kayly silverstorm</a> 94k; harmony</li>
+<li><a href="https://www.fanfiction.net/s/5353809">Harry Potter and the Boy Who Lived - The Santi</a> 147k; ?</li>
+<li><a href="https://www.fanfiction.net/s/3766574">Prince of the Dark Kingdom - Mizuni-sama</a> 1253k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/11574569">Dodging Prison and Stealing Witches - Revenge is Best Served Raw - LeadVonE</a> 646k; mult (harry/hermione/daphne/ginny)</li>
+<li><a href="https://www.fanfiction.net/s/9863146">The Accidental Animagus - White Squirrel</a> 697k; harmony?</li>
+<li><a href="https://www.fanfiction.net/s/11910994">Divided and Entwined - Starfox5</a> 643k; Ron/Hermione</li>
+<li><a href="https://www.fanfiction.net/s/9860311">A Long Journey Home - Rakeesh</a> 203k; fem!Harry</li>
+<li><a href="https://www.fanfiction.net/s/11773877">The Dark Lord Never Died - Starfox5</a> 179k; Ron/Hermione</li>
+<li><a href="https://www.fanfiction.net/s/7613196">The Pureblood Pretense - murkybluematter</a> 229k; fem!harry</li>
+<li><a href="https://www.fanfiction.net/s/10937871">Blindness - AngelaStarCat</a> 324k; harmony</li>
+<li><a href="https://www.fanfiction.net/s/4101650">Backward With Purpose Part I: Always and Always - deadwoodpecker</a> 286k; hinny</li>
+<li><a href="https://www.fanfiction.net/s/8096183">Harry Potter and the Natural 20 - Sir Poley</a> 314k; XO D&amp;D; OC!SI!Harry</li>
+<li><a href="https://www.fanfiction.net/s/3473224">The Denarian Renegade - Shezza</a> 234k; XO Dresden Files; gen?</li>
+<li><a href="https://www.fanfiction.net/s/4068153">Harry Potter and the Wastelands of Time - joe6991</a> 282k; flowerpot</li>
+<li><a href="https://www.fanfiction.net/s/3384712">The Lie I've Lived - jbern</a> 234k; flowerpot</li>
+<li><a href="https://www.fanfiction.net/s/4536005">Oh God Not Again! - Sarah1281</a> 162k; gen</li>
+<li><a href="https://www.fanfiction.net/s/10645463">Hail Odysseus - Brennus</a> 157k; hinny</li>
+<li><a href="https://www.fanfiction.net/s/3557725">Forging the Sword - Myst Shadow</a> 152k; gen</li>
+<li><a href="https://www.fanfiction.net/s/11446957">A Cadmean Victory - DarknessEnthroned</a> 104k; flowerpot</li>
+<li><a href="https://www.fanfiction.net/s/10070079">The Arithmancer - White Squirrel</a> 529k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/9238861">Applied Cultural Anthropology, or How I Learned to Stop Worrying and Love the Cruciatus - jacobk</a> 168k; gen</li>
+<li><a href="https://www.fanfiction.net/s/10595005">Hermione Granger and the Marriage Law Revolution - Starfox5</a> 127k; Harmony</li>
+<li><a href="https://www.fanfiction.net/s/4745329">On the Way to Greatness - mira mirth</a> 255k; gen</li>
+<li><a href="https://www.fanfiction.net/s/2857962">Browncoat, Green Eyes - nonjon</a> 298k; XO firefly; Harry/River?</li>
+<li><a href="https://www.fanfiction.net/s/11111990">Grow Young with Me - Taliesin19</a> 264k; Harry/OC</li>
+<li><a href="https://www.fanfiction.net/s/10758358">What You Leave Behind - Newcomb</a> 122k; Flowerpot</li>
+<li><a href="https://www.fanfiction.net/s/8303194">Magicks of the Arcane - Eilyfe</a> 285k; ?</li>
+<li><a href="https://www.fanfiction.net/s/6331126">Strangers at Drakeshaugh - Northumbrian</a> 189k; hinny</li>
+<li><a href="https://www.fanfiction.net/s/2580283">Saving Connor - Lightning on the Wave</a> 81k; drarry wbwl</li>
+<li><a href="https://www.fanfiction.net/s/6919395">The Changeling - Annerb</a> 189k; hinny</li>
+<li><a href="https://www.fanfiction.net/s/9057950">Too Young to Die - thebombhasbeenplanted</a> 194k; ?</li>
+<li><a href="https://www.fanfiction.net/s/5782108">Harry Potter and the Methods of Rationality - Less Wrong</a> 661k; harmony?</li>
+<li><a href="https://www.fanfiction.net/s/4152700">Cauterize - Lady Altair</a> 1.6k; gen</li>
+<li><a href="https://www.fanfiction.net/s/3964606">Alexandra Quick and the Thorn Circle - Inverarity</a> 165k; Hard Fanon</li>
+<li><a href="https://www.fanfiction.net/s/8629685">Firebird's Son: Book I of the Firebird Trilogy - Darth Marrs</a> 172k; Huna?</li>
+<li><a href="https://www.fanfiction.net/s/11585823">The Art of Self-Fashioning - Lomonaaeren</a> 293k; gen</li>
+<li><a href="https://www.fanfiction.net/s/8175132">Jamie Evan's and Fate's Fool - The Mad Mad Reviewer</a> 77k; Honks</li>
+<li><a href="https://www.fanfiction.net/s/9704180">I'm Still Here - kathryn518</a> 292k; mult (harry/fleur/daphne)</li>
+<li><a href="https://www.fanfiction.net/s/9720211">The Merging - Shaydrall</a> 428k; Harmony?</li>
+<li><a href="https://www.fanfiction.net/s/6466185">Harry the Hufflepuff - BajaB</a> 29k; gen</li>
+<li><a href="https://www.fanfiction.net/s/7718942">Broken Chains - Darth Marrs</a> 156k; mult (harry/hermione/luna)</li>
+<li><a href="https://www.fanfiction.net/s/2889350">Bungle in the Jungle: A Harry Potter Adventure - jbern</a> 189k; Huna</li>
+<li><a href="https://www.fanfiction.net/s/9783012">Reign of the Serpent - AlphaEph19</a> 217k; Harmony</li>
+<li><a href="https://www.fanfiction.net/s/2680093">Circular Reasoning - Swimdraconian</a> 243k; ?</li>
+<li><a href="https://www.fanfiction.net/s/6254783">Rise of the Wizards - Teufel1987</a> 479k; harmony?</li>
+<li><a href="https://www.fanfiction.net/s/11160991">0800-Rent-A-Hero - brainthief</a> 159k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/2318355">Make A Wish - Rorschach's Blot</a> 187k; grab bag</li>
+<li><a href="https://www.fanfiction.net/s/10772496">The Debt of Time - ShayaLonnie</a> 727k; time travel hermione/sirius/remus triangle?</li>
+<li><a href="https://www.fanfiction.net/s/3979062">Hogwarts Houses Divided - Inverarity</a> 205k; teddy/oc?</li>
+<li><a href="https://www.fanfiction.net/s/8233291">Princess of the Blacks - Silently Watches</a> 189k; fem!Harry</li>
+<li><a href="https://www.fanfiction.net/s/12040341">The Stars Alone - Darth Marrs</a> 287k; XO SG-1; mult? (Harry/Luna/Hermione)</li>
+<li><a href="https://www.fanfiction.net/s/10493620">Ruthless - AngelaStarCat</a> 25k; mult (harry/hermione/tonks)</li>
+<li><a href="https://www.fanfiction.net/s/11115934">The Shadow of Angmar - Steelbadger</a> 237k; XO Lotr; gen?</li>
+<li><a href="https://www.fanfiction.net/s/9036071">With Strength of Steel Wings - AngelaStarCat</a> 719k; Harmony?</li>
+<li><a href="https://www.fanfiction.net/s/8379655">Hogwarts Battle School - Kwan Li</a> 372k; ?</li>
+<li><a href="https://www.fanfiction.net/s/10871795">A Little Child Shall Lead Them - White Squirrel</a> 31k; Harmony?</li>
+<li><a href="https://www.fanfiction.net/s/12382425">Like a Red Headed Stepchild - mugglesftw</a> 186k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/5201703">By the Divining Light - enembee</a> 24k; ?</li>
+<li><a href="https://www.fanfiction.net/s/10136172">Core Threads - theaceoffire</a> 376k; mult</li>
+<li><a href="https://www.fanfiction.net/s/10610076">Time to Put Your Galleons Where Your Mouth Is - Tsume Yuki</a> 46k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/11419408">Not From Others - FloreatCastellum</a> 133k; hinny?</li>
+<li><a href="https://www.fanfiction.net/s/3155057">Altered Destinies - DobbyElfLord</a> 289k; ?</li>
+<li><a href="https://www.fanfiction.net/s/4655545">Reunion - Rorschach's Blot</a> 61k; ?</li>
+<li><a href="https://www.fanfiction.net/s/5604382">The Accidental Bond - kb0</a> 415k; mult</li>
+<li><a href="https://www.fanfiction.net/s/2488754">A Second Chance at Life - Miranda Flairgold</a> 251k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/8501689">The Havoc side of the Force - Tsu Doh Nimh</a> 207k; XO star wars;</li>
+<li><a href="https://www.fanfiction.net/s/8197451">Fantastic Elves and Where to Find Them - evansentranced</a> 38k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/2913149">The Darkness Within - kurinoone</a> 364k; idk</li>
+<li><a href="https://www.fanfiction.net/s/8581093">One Hundred and Sixty Nine - Mrs J's Soup</a> 317k; Sirius/Hermione</li>
+<li><a href="https://www.fanfiction.net/s/11157943">I Still Haven't Found What I'm Looking For - kathryn518</a> 344k; XO starwars; Harry/Aayla/Ahsoka?</li>
+<li><a href="https://www.fanfiction.net/s/11762850">Harry Potter and the Accidental Horcrux - the Imaginizer</a> 273k; gen? kinda</li>
+<li><a href="https://www.fanfiction.net/s/8149841">Again and Again - AtherisHiss</a> 335k; Tomarry</li>
+<li><a href="https://www.fanfiction.net/s/6517567">Harry Potter and the Temporal Beacon - willyolioleo</a> 428k; harmony</li>
+<li><a href="https://www.fanfiction.net/s/7402590">Deprived - The Crimson Lord</a> 159k; Flowerpot</li>
+<li><a href="https://www.fanfiction.net/s/10687059">Returning to the Start - timunderwood9</a> 40k; harmony</li>
+<li><a href="https://www.fanfiction.net/s/6256154">The Unforgiving Minute - Voice of the Nephilim</a> 84k; Hinny</li>
+<li><a href="https://www.fanfiction.net/s/6413108">To Shape and Change - Blueowl</a> 232k; time travel snape; gen?</li>
+<li><a href="https://www.fanfiction.net/s/9469064">Innocent - MarauderLover7</a> 494k; sirius raising harry?</li>
+<li><a href="https://www.fanfiction.net/s/11265467">Petrification Proliferation - White Squirrel</a> 34k; gen</li>
+<li><a href="https://www.fanfiction.net/s/10210053">Harry Potter and the Untitled Tome - Ihateseatbelts</a> 219k; harmony?</li>
+<li><a href="https://www.fanfiction.net/s/7135971">The Voyage of the Starship Hedwig - Ynyr</a> 100k; gen?</li>
+<li><a href="https://www.fanfiction.net/s/5483280">Harry Potter and the Champion's Champion - DriftWood1965</a> 109k; harmony</li>
+<li><a href="https://www.fanfiction.net/s/7410369">Time Heals All Wounds - brightsilverkitty</a> 150k; bellamione</li>
+<li><a href="https://www.fanfiction.net/s/2565609">Odd Ideas - Rorschach's Blot</a> 862k; grab bag</li>
+<li><a href="https://www.fanfiction.net/s/12511998">Wind Shear - Chilord</a> 126k; hellatrix</li>
+<li><a href="https://www.fanfiction.net/s/10099028">Murder Most Horrid - Useful Oxymoron</a> 425k; Bellamoine</li>
+<li><a href="https://www.fanfiction.net/s/2354771">Where in the World is Harry Potter? - nonjon</a> 54k; gen</li>
+<li><a href="https://www.fanfiction.net/s/11530029/1/Where-the-Air-is-Rarefied">Where the Air is Rarefied - thirty2flavors</a> 7.3k; jilly</li>
+</ul>
+<h2 id="maybe-recommended"><a class="header" href="#maybe-recommended">Maybe Recommended</a></h2>
+<ul>
+<li><a href="https://www.fanfiction.net/s/10951430/1/Surroundings">Surroundings - IWasJustAnotherGuy</a> 77k; haphne ongoing?</li>
+<li><a href="https://www.fanfiction.net/s/13326122/1/">Ten Tips to Tranquility - bking4</a> 18k; gen Natural Occlumens!Daphne</li>
+<li><a href="https://archiveofourown.org/series/3112863">A Flaw in Fate - 521DREAM</a> 192k+ &gt;42ch (4.5k/chp); harry/fem!Voldemort? harry x fem!Voldemort? haphne?</li>
+<li><a href="https://archiveofourown.org/works/44352457/chapters/111543781">Kindly Stopped for Me - nodirectionhome</a> 101k &gt;17chp (5.9k words/chp); AU Lily Lives; Voldemort's  reincarnation reincarnates lily</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
