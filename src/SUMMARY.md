@@ -10,6 +10,7 @@
 
 - [Personal Recommendations]()
     - [milfoy](./recommendations/milfoy.md)
+    - [andromeda/harry](./recommendations/andromeda.md)
 
 - [Work in Progress Recommendations]()
     - [hellatrix](./recommendations/hellatrix.md)
