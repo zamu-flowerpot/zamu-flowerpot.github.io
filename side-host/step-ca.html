@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html lang="en" class="rust sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>step-ca config</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "rust";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="step-ca"><a class="header" href="#step-ca">step-ca</a></h1>
+<p>I definitely have some knowledge that I haven't written down here, but I haven't set up another since the last one to validate the configuration.
+I originally used this article, <a href="https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/">Build a Tiny CA with Raspberry PI and YubiKey</a>, which is good.
+You don't <em>need</em> the YubiKey and can just leave the key and cert on the local disk if your threat model is safe enough.
+But yeah, the tutorial definitely can help fill in any weird blanks I've left below. I'd even say read through the tutorial and then use this as a reference if this makes sense.
+That said feel free to ping me if you have questions.</p>
+<h2 id="install-step-ca"><a class="header" href="#install-step-ca">install step-ca</a></h2>
+<pre><code class="language-bash"># note the fingerprint value (sha256 checksum of the root.crt) as it's used by the step-cli client for bootstrapping
+# I generally just download the root.crt and generate it (ie calculate the sha256),
+# but you probably should have fingerprint via a separate channel and do it right.
+step ca init --ssh --acme --password-file ${STEPCA_PASS_FILE} --provisioner-password-file ${STEPCA_PROV_PASS_FILE} --remote-management
+step-ca $(step path)/config/ca.json --password-file ${STEPCA_PASS_FILE}
+</code></pre>
+<h2 id="configuring-step-ca"><a class="header" href="#configuring-step-ca">configuring step-ca</a></h2>
+<p>You can find the configuration file at <code>echo $(step path)/config/ca.json</code>.</p>
+<p>Check out step's own documentation for configuring <code>step-ca</code> at <a href="https://prof.infra.smallstep.com/docs/step-ca/configuration">StepCA Config docs</a>.</p>
+<p>Of note (for me) were:</p>
+<ul>
+<li><code>ssh</code> in general to configure ssh ca</li>
+<li>passing the CA password via <code>--password-file</code> for the systemd service so it's not interactive</li>
+<li><code>db</code> if you want better support. (I'm currently just using bbolt, but probably should have spun up postgresql)</li>
+<li><code>authority</code> and specifically the <code>provisioners</code> subsection which sets up what things can talk to step ca and how</li>
+<li><code>authority</code> level <code>policy</code> which allows enough control to allow you to restrict who and what gets to create and be created.</li>
+<li>I also tweaked <code>ssh</code> templates since I tend to run all my sshd on a non-standard port.</li>
+</ul>
+<p>Read through <a href="https://prof.infra.smallstep.com/docs/step-ca/certificate-authority-server-production">CA Server Production Setup docs</a> to make sure that you don't hit footguns.</p>
+<p>SmallStep provide a <code>systemd</code> service unit for step-ca in this subsection of the <a href="https://smallstep.com/docs/step-ca/certificate-authority-server-production#create-a-service-user-to-run-step-ca">Production Setup docs</a>.</p>
+<h2 id="configuring-remote-clients-to-talk-to-step-ca"><a class="header" href="#configuring-remote-clients-to-talk-to-step-ca">configuring remote clients to talk to step ca</a></h2>
+<h3 id="step-cli"><a class="header" href="#step-cli">Step CLI</a></h3>
+<pre><code class="language-bash">CA_URL=""
+CA_CERT_FINGERPRINT=""
+# download the root.crt
+curl -OJL https://example.com/root.crt
+# if lazy
+# CA_CERT_FINGERPRINT="$(step certificate fingerprint root.crt)"
+
+# for the step-cli tool
+step ca bootstrap --ca-url ${CA_URL} --fingerprint ${CA_CERT_FINGERPRINT}
+# now install root crt to trust store
+step certificate install ./root.crt
+# or
+#sudo trust anchor ./root.crt
+# or
+#sudo cp root.crt /etc/pki/ca-trust/source/anchors/example-com.crt &amp;&amp; sudo update-ca-trust
+</code></pre>
+<h3 id="caddy"><a class="header" href="#caddy">caddy</a></h3>
+<p>I use caddy since it does ACME automatically without configuring extra side services or needed custom builds which bundle the side service (like nginx &amp; co.).</p>
+<p>See <a href="https://smallstep.com/docs/tutorials/acme-protocol-acme-clients#caddy-v2">Step CA ACME client setup docs</a>.</p>
+<p>For mTLS shenanigans, here is the relevant caddy config changes I've done.</p>
+<h4 id="mtls-caddy-config"><a class="header" href="#mtls-caddy-config">mtls caddy config</a></h4>
+<pre><code class="language-bash">CA_URL="${CA_URL:-https://localhost:8443/acme/acme/directory}"
+CA_ROOT_CERT=$(step path)/certs/root_ca.crt
+sudo tee /etc/caddy/Caddyfile &lt;&lt; EOF
+{
+  admin off
+  email caddy-service-account@example.com
+  acme_ca ${CA_URL}
+  acme_ca_root ${CA_ROOT_CERT}
+  renew_interval 16h
+  debug
+}
+(common) {
+  log {
+    output file /tmp/caddy/access.log {
+      roll_size 512MiB
+      roll_keep_for 720h
+    }
+    format json
+  }
+}
+(secure) {
+  import common
+  tls {
+    client_auth {
+      mode require_and_verify
+      trust_pool file ${CA_ROOT_CERT}
+    }
+  }
+}
+some-service.example.local {
+  # some low security service
+  reverse_proxy http://someip:9999 {
+    header_up Host {host}
+  }
+  import common
+}
+secure-service.example.local {
+  reverse_proxy http://otherip:3333 {
+    header_up Host {host}
+  }
+  import secure
+}
+EOF
+</code></pre>
+<p>Other services are described on the page though so feel free to configure and find what works for you.</p>
+<h3 id="but-what-about-service-discovery"><a class="header" href="#but-what-about-service-discovery">But what about service discovery?!</a></h3>
+<p>Yeah that's one of the pain points here. Caddy technically can hit up some DNS and submit the DNS A (and/or AAAA) record for your service that just got a TLS cert assigned, but I never got around to host PowerDNS and the other DNS servers which support this type of configuration are a pain. Instead I just have a CoreDNS instance which wildcards a domain for each host which makes this very simple. So anything that is registered to <code>example.com</code> or <code>*.example.com</code> is routed correctly.</p>
+<p>There are pain points, but I found this to works in a "good enough" manner to not matter.</p>
+<h4 id="coredns-corefile"><a class="header" href="#coredns-corefile">CoreDNS Corefile</a></h4>
+<pre><code class="language-bash">PROMETHEUS_SCRAPE_ENDPOINT="someip:9253"
+sudo tee /etc/coredns/Corefile &lt;&lt; EOF
+(common) {
+  loop
+  header {
+    response set ra aa
+  }
+  log . {
+    class denial error
+  }
+  prometheus ${PROMETHEUS_SCRAPE_ENDPOINT}
+  cache 300
+}
+example.local {
+  import common
+  file /etc/coredns/db.example.local example.local
+}
+EOF
+</code></pre>
+<h4 id="example-coredns-dbexamplelocal"><a class="header" href="#example-coredns-dbexamplelocal">example CoreDNS db.example.local</a></h4>
+<pre><code class="language-bash">DNS_SERVER_IP=${DNS_SERVER_IP:-$HOSTNAME}
+EXAMPLE_LOCAL_IP=${EXAMPLE_LOCAL_IP:-127.0.0.1}
+sudo tee /etc/coredns/db.example.local &lt;&lt; EOF
+\$TTL 1D
+\$ORIGIN example.local.
+@ 3600 IN SOA ${DNS_SERVER_IP}. admin@example.local (
+  202111111
+  1D
+  1H
+  1W
+  300
+)
+@ IN A ${EXAMPLE_LOCAL_IP}
+* IN A ${EXAMPLE_LOCAL_IP}
+EOF
+</code></pre>
+<h2 id="ssh-ca-configuration"><a class="header" href="#ssh-ca-configuration">SSH CA configuration</a></h2>
+<h3 id="bootstrap-base-requirements"><a class="header" href="#bootstrap-base-requirements">bootstrap base requirements</a></h3>
+<pre><code class="language-bash">VERSION="0.28.2"
+curl -OJL "https://dl.smallstep.com/gh-release/cli/gh-release-header/v${VERSION}/step_linux_${VERSION}_amd64.tar.gz"
+tar xvf "./step_linux_${VERSION}_amd64.tar.gz"
+</code></pre>
+<pre><code class="language-bash">CA_URL=${CA_URL:-"https://127.0.0.1:8443"}
+sudo cp ./bin/step /usr/local/bin/step
+curl -L "${CA_URL}/root.crt" -O- &gt; root.crt
+
+# bootstrap step-cli
+step ca bootstrap --ca-url="${CA_URL}" --fingerprint="$(step certificate fingerprint root.crt)"
+</code></pre>
+<h3 id="sshd-configuration"><a class="header" href="#sshd-configuration">sshd configuration</a></h3>
+<p>Remember that principal files (ie <code>/etc/ssh/principals/</code>) are a mapping of filename (which is a user name) to the list of principals (or labels in this case) which are allowed to sign in.
+So you can use stuff like groups (eg. <code>dev</code>, <code>admin</code>, <code>audio</code>) or whatever really.
+So if I create a SSH cert with the <code>zamu</code> principal, I could to login to root if I had <code>zamu</code> as a line in <code>/etc/ssh/principals/root</code>.</p>
+<pre><code class="language-bash">NAME="${NAME:-$HOSTNAME}"
+PRINCIPAL="${PRINCIPAL:-admin}"
+USER="${USER}"
+SSH_PORT="${SSH_PORT:-22}"
+# get the right keys in the right place
+step ssh config --roots | sudo tee /etc/ssh/ssh_user_key.pub
+step ssh config --roots --host | sudo tee /etc/ssh/ssh_host_ecdsa_key
+# configure your local user's ssh
+step ssh config
+
+# generate host keys and put them in the right place
+mkdir /tmp/stepca/ &amp;&amp; cd /tmp/stepca/
+# unfortunately this generates multiple files and based on the key file name so unless you want to configure the
+# root user to have step cli bootstrapped as well, it's best to generate them and then copy them into the right place
+step ssh certificate "${NAME}" /tmp/stepca/ssh_host_ecdsa_key --no-password --insecure --host --not-after=87600h
+sudo mv /tmp/stepca/ssh_host_ecdsa_key* /etc/ssh/
+
+# enable base sshd config
+# these are just my personal SSH configuration changes feel free to do what you want.
+# this expects the first line in /etc/ssh/sshd_config to be an `Include /etc/ssh/sshd_config.d/*`
+# you can instead just manually tweak the sshd_config file, but drop ins are nice
+# also sshd_config drop-ins are first instance binding instead of last value in, so you might want to bind earlier.
+sudo tee /etc/ssh/sshd_config.d/10-homelab.conf &lt;&lt; EOF
+Port ${SSH_PORT}
+PermitRootLogin no
+PubkeyAuthentication yes
+AuthorizedKeysFile	.ssh/authorized_keys
+AuthorizedPrincipalsFile /etc/ssh/principals/%u
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+GSSAPIAuthentication no
+UsePAM yes
+EOF
+
+# enable ssh ca cert configuration
+sudo tee /etc/ssh/sshd_config.d/11-stepca.conf &lt;&lt; EOF
+TrustedUserCAKeys /etc/ssh/ssh_user_key.pub
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostCertificate /etc/ssh/ssh_host_ecdsa_key-cert.pub
+EOF
+
+sudo mkdir -p /etc/ssh/principals/
+echo "$PRINCIPAL" | sudo tee /etc/ssh/principals/${USER}
+</code></pre>
+<pre><code class="language-bash">sudo systemctl restart sshd
+</code></pre>
+<h3 id="ssh-user-keys"><a class="header" href="#ssh-user-keys">ssh user keys</a></h3>
+<pre><code class="language-bash">PRINCIPAL="${USER}"
+REMOTE_USER="${USER}"
+SSH_PORT="${SSH_PORT:-22}"
+HOST="${HOST:-localhost}"
+# get the right local ssh key
+step ssh login -n=${PRINCIPAL} # -n=${PRINCIPAL2} and so on
+# then just ssh in
+ssh -p ${SSH_PORT} -l ${REMOTE_USER} ${HOST}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../side-host.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../contribution.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../side-host.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../contribution.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
