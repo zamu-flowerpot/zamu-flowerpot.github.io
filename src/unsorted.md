@@ -30,7 +30,6 @@ Also none of these have been proofed for quality, people have just recommended t
 - [Harry Potter and the Wastelands of Time - joe6991](https://www.fanfiction.net/s/4068153) 282k; flowerpot
 - [The Lie I've Lived - jbern](https://www.fanfiction.net/s/3384712) 234k; flowerpot
 - [Oh God Not Again! - Sarah1281](https://www.fanfiction.net/s/4536005) 162k; gen
-- [Hail Odysseus - Brennus](https://www.fanfiction.net/s/10645463) 157k; hinny
 - [Forging the Sword - Myst Shadow](https://www.fanfiction.net/s/3557725) 152k; gen
 - [A Cadmean Victory - DarknessEnthroned](https://www.fanfiction.net/s/11446957) 104k; flowerpot
 - [The Arithmancer - White Squirrel](https://www.fanfiction.net/s/10070079) 529k; gen?
@@ -41,9 +40,7 @@ Also none of these have been proofed for quality, people have just recommended t
 - [Grow Young with Me - Taliesin19](https://www.fanfiction.net/s/11111990) 264k; Harry/OC
 - [What You Leave Behind - Newcomb](https://www.fanfiction.net/s/10758358) 122k; Flowerpot
 - [Magicks of the Arcane - Eilyfe](https://www.fanfiction.net/s/8303194) 285k; ?
-- [Strangers at Drakeshaugh - Northumbrian](https://www.fanfiction.net/s/6331126) 189k; hinny
 - [Saving Connor - Lightning on the Wave](https://www.fanfiction.net/s/2580283) 81k; drarry wbwl
-- [The Changeling - Annerb](https://www.fanfiction.net/s/6919395) 189k; hinny
 - [Too Young to Die - thebombhasbeenplanted](https://www.fanfiction.net/s/9057950) 194k; ?
 - [Harry Potter and the Methods of Rationality - Less Wrong](https://www.fanfiction.net/s/5782108) 661k; harmony?
 - [Cauterize - Lady Altair](https://www.fanfiction.net/s/4152700) 1.6k; gen
