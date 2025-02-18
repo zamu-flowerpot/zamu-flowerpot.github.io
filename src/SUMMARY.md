@@ -21,3 +21,5 @@
 
 [Contribution](./contribution.md)
 [Entirely Unsorted](./unsorted.md)
+- [Entirely Unrelated](./side-host.md)
+    - [step-ca config](./side-host/step-ca.md)
